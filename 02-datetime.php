@@ -73,12 +73,27 @@ echo "今天是西元";
 echo  date("Y年m月d日");
 echo  (date("N")>5)?" 假日":" 上班日";
 echo "<br>";
+?>
+<h2>利用迴圈來計算連續五個周一的日期</h2>
+例:
 
+<ul>
+    <li>2021-10-04 星期一</li>
+    <li>2021-10-11 星期一</li>
+    <li>2021-10-18 星期一</li>
+    <li>2021-10-25 星期一</li>
+    <li>2021-11-01 星期一</li>
+</ul>
+<?php 
+$date="2026-05-04";
+for($i=1;$i<=5;$i++){
 
-
+    $timestring=strtotime("+$i weeks" , strtotime($date));
+    echo  date("Y-m-d 星期一",$timestring);
+    echo "<br>";
+}
 
 ?>
-
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
