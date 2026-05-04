@@ -127,7 +127,9 @@ $TotalWeeks=$TotalDays/7
 }
 </style>
 <div id="calendar">
-    <div class='tr'><div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div></div>
+    <div class='tr'>
+        <div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div>
+    </div>
     <?php 
     for($i=0;$i<$TotalWeeks;$i++){
         echo "<div class='tr'>";
