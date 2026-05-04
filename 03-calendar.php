@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>萬年曆</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
 </head>
 <body>
 <h2>月曆</h2>
@@ -29,10 +30,17 @@ $TotalWeeks=$TotalDays/7
 <style>
     table{
         border-collapse: collapse;
+        font-size:16px;
     }
     table td{
         padding:5px 10px;
         border:1px solid #999;
+    }
+    table td:hover{
+        padding:5px 10px;
+        border:1px solid #999;
+        font-size:28px;
+        background:lightgreen;
     }
 </style>
 <table>
@@ -49,7 +57,7 @@ $TotalWeeks=$TotalDays/7
     for($i=0;$i<$TotalWeeks;$i++){
         echo "<tr>";
         for($j=0;$j<7;$j++){
-            echo "<td>";
+            echo "<td data-date=''>";
             $DayNumber=($i*7+$j)-($FirstDayWeek-1);
             if($DayNumber>0 && $DayNumber<=$MonthDays){
                 echo $DayNumber;
@@ -61,10 +69,92 @@ $TotalWeeks=$TotalDays/7
 
     ?>
 </table>
-<?php 
+<hr>
+<table>
+    <tr>
+        <td>日</td>
+        <td>一</td>
+        <td>二</td>
+        <td>三</td>
+        <td>四</td>
+        <td>五</td>
+        <td>六</td>
+    </tr>
+    <?php 
+    for($i=0;$i<$TotalWeeks;$i++){
+        echo "<tr>";
+        for($j=0;$j<7;$j++){
 
+            $DayNumber=($i*7+$j)-($FirstDayWeek-1);
+            if($DayNumber>0 && $DayNumber<=$MonthDays){
+                $date=date("Y-m-$DayNumber");
+                if($date=='2026-05-16'){
+                    echo "<td data-date='$date' style='background:skyblue;font-weight:bolder'>";
+                    echo "紀念日";
+                }else{
+                    echo "<td data-date='$date'>";
+                }
+                    
+                echo date("d",strtotime($date));
+                echo "</td>";
+            }else{
+                echo "<td></td>";
+            }
+        }
+        echo "</tr>";
+    }
 
+    ?>
+</table>
+<hr>
+<style>
+#calendar .tr div{
+    padding:0;
+ display:inline-block;
+ width:50px;
+ height:50px;
+ border:1px solid #999;
+ margin:-1px 0 0 -1px;
+ vertical-align: top;
+ 
+}
+#calendar .tr div:hover{
+    padding:0;
+    font-size:26px;
+    background:lightgreen;
+    font-weight:bold;
+    margin:-1px 0 0 -1px;
+}
+</style>
+<div id="calendar">
+    <div class='tr'><div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div></div>
+    <?php 
+    for($i=0;$i<$TotalWeeks;$i++){
+        echo "<div class='tr'>";
+        for($j=0;$j<7;$j++){
 
-?>
+            $DayNumber=($i*7+$j)-($FirstDayWeek-1);
+            if($DayNumber>0 && $DayNumber<=$MonthDays){
+                $date=date("Y-m-$DayNumber");
+                if($date=='2026-05-16'){
+                    echo "<div data-date='$date' style='background:skyblue;font-weight:bolder'>";
+
+                }else{
+                    echo "<div data-date='$date'>";
+                }
+                    
+                echo date("d",strtotime($date));
+                echo "</div>";
+            }else{
+                echo "<div>&nbsp;</div>";
+            }
+        }
+        echo "</div>";
+    }
+
+    ?>
+</div>
+<hr>
+
 </body>
 </html>
