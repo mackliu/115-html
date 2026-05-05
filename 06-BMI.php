@@ -142,12 +142,12 @@ button:hover {
         <form action="bmi_result.php" method="get">
             <div class="input-group">
                 <i class="fa-solid fa-ruler-vertical"></i>
-                <input type="number" placeholder="請輸入身高 (cm)">
+                <input type="number" name="height" placeholder="請輸入身高 (cm)">
             </div>
 
             <div class="input-group">
                 <i class="fa-solid fa-weight-scale"></i>
-                <input type="number" placeholder="請輸入體重 (kg)">
+                <input type="number" name="weight" placeholder="請輸入體重 (kg)">
             </div>
 
             <button type="submit">
@@ -166,14 +166,13 @@ button:hover {
         <form action="bmi_result.php" method="post">
             <div class="input-group">
                 <i class="fa-solid fa-ruler-vertical"></i>
-                <input type="number" placeholder="請輸入身高 (cm)">
+                <input type="number" name="height" placeholder="請輸入身高 (cm)">
             </div>
 
             <div class="input-group">
                 <i class="fa-solid fa-weight-scale"></i>
-                <input type="number" placeholder="請輸入體重 (kg)">
+                <input type="number" name="weight" placeholder="請輸入體重 (kg)">
             </div>
-
             <button type="submit">
                 <i class="fa-solid fa-calculator"></i> 送出計算
             </button>
