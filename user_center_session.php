@@ -1,10 +1,17 @@
 <?php
+session_start();
 
-if(!($_POST['username']=='mack' && $_POST['password']=='1234')){
-    echo "帳號或密碼錯誤,請重新登入";
-    echo "<a href='07-login-get.php'>登入</a>";
-    exit();
+if(!isset($_SESSION['login'])){
+    if(!($_POST['username']=='mack' && $_POST['password']=='1234')){
+        echo "帳號或密碼錯誤,請重新登入";
+        echo "<a href='07-login-get.php'>登入</a>";
+        exit();
+    }
+
+    $_SESSION['login']=1;
 }
+
+
 
 ?>
 
@@ -394,7 +401,7 @@ if(!($_POST['username']=='mack' && $_POST['password']=='1234')){
             <h2>歡迎回來！</h2>
             <p>
                 <?php
-                $username = isset($_GET['username']) ? htmlspecialchars($_GET['username']) : '訪客';
+                $username = isset($_POST['username']) ? htmlspecialchars($_POST['username']) : '訪客';
                 echo $username;
                 ?>
             </p>
@@ -418,7 +425,7 @@ if(!($_POST['username']=='mack' && $_POST['password']=='1234')){
                     </div>
                 </div>
                 <div class="info-item">
-                    <div class="info-label">會員等級</div>
+                    <div class="info-label">會員等級(<?= $_SESSION['login']; ?>)</div>
                     <div class="info-value">🌟 普通會員</div>
                 </div>
                 <div class="info-item">

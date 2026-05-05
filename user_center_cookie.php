@@ -6,6 +6,8 @@ if(!($_POST['username']=='mack' && $_POST['password']=='1234')){
     exit();
 }
 
+setcookie('login','1',time()+360);
+
 ?>
 
 
@@ -382,7 +384,7 @@ if(!($_POST['username']=='mack' && $_POST['password']=='1234')){
             <span>會員中心</span>
         </div>
         <form method="GET" style="margin: 0;">
-            <a href='07-login-get.php'class="logout-btn">登出</a>
+            <a href='08-login-cookie.php'class="logout-btn">登出</a>
         </form>
     </header>
 
@@ -391,10 +393,10 @@ if(!($_POST['username']=='mack' && $_POST['password']=='1234')){
         <!-- 歡迎區 -->
         <div class="welcome-section">
             <div class="welcome-emoji">🌻</div>
-            <h2>歡迎回來！</h2>
+            <h2>歡迎回來！(COOKIE)</h2>
             <p>
                 <?php
-                $username = isset($_GET['username']) ? htmlspecialchars($_GET['username']) : '訪客';
+                $username = isset($_POST['username']) ? htmlspecialchars($_POST['username']) : '訪客';
                 echo $username;
                 ?>
             </p>
@@ -414,11 +416,11 @@ if(!($_POST['username']=='mack' && $_POST['password']=='1234')){
                 <div class="info-item">
                     <div class="info-label">帳號</div>
                     <div class="info-value">
-                        <?php echo isset($_GET['username']) ? htmlspecialchars($_GET['username']) : '未設定'; ?>
+                        <?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : '未設定'; ?>
                     </div>
                 </div>
                 <div class="info-item">
-                    <div class="info-label">會員等級</div>
+                    <div class="info-label">會員等級(<?= $_COOKIE['login']; ?>)</div>
                     <div class="info-value">🌟 普通會員</div>
                 </div>
                 <div class="info-item">

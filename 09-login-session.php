@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+
+if(isset($_SESSION['login'])){
+    header("location:user_center_session.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -301,7 +311,7 @@
             <p class="subtitle">開始你的冒險旅程</p>
         </div>
 
-        <form action="user_center.php" method="post">
+        <form action="user_center_session.php" method="post">
             <div class="form-group">
                 <label for="username">帳號</label>
                 <input type="text" id="username" name="username" placeholder="請輸入帳號" required>
