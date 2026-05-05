@@ -1,3 +1,13 @@
+<?php 
+
+if(isset($_COOKIE['login'])){
+
+   header("location:user_center_cookie.php");
+    
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>

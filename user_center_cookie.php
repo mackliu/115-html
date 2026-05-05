@@ -1,12 +1,19 @@
 <?php
 
-if(!($_POST['username']=='mack' && $_POST['password']=='1234')){
-    echo "帳號或密碼錯誤,請重新登入";
-    echo "<a href='07-login-get.php'>登入</a>";
-    exit();
+if(!isset($_COOKIE['login'])){
+
+    if(!($_POST['username']=='mack' && $_POST['password']=='1234')){
+        echo "帳號或密碼錯誤,請重新登入";
+        echo "<a href='07-login-get.php'>登入</a>";
+        exit();
+    }
 }
 
-setcookie('login','1',time()+360);
+if(!isset($_COOKIE['login'])){
+
+    setcookie('login','1',time()+240);
+    
+}
 
 ?>
 
