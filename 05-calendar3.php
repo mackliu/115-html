@@ -10,7 +10,11 @@
 <h2>月曆</h2>
 <?php
 $today=date("Y-m-d");
-$month=$_GET['month'];
+if(isset($_GET['month'])){
+    $month=$_GET['month'];
+}else{
+    $month=date("Y-m");
+}
 $FirstDay=$month."-01";
 $m=date("m",strtotime($FirstDay));
 $FirstDayWeek=date("w",strtotime($FirstDay));
